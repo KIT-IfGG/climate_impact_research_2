@@ -2,26 +2,25 @@ library(ProfoundData)
 library(LandClimTools)
 library(raster)
 
-### Path to database file
-setDB("data/ProfoundData.sqlite")
+setDB("../data/ProfoundData.sqlite")
 
 overview <- browseData()
 site_infos <- ProfoundData::getData(dataset =  "SITES")
-site_infos[,c("name1", "natVegetation_description")]
+site_infos <- site_infos[overview$TREE ==1,]
+site_infos$site
 
 
 ### Select site for simulations ####
 ### Select sites for which climate data are available
-sites <- overview[overview$CLIMATE==1,]
+sites <- overview[overview$CLIMATE_ISIMIPFT==1,]
 
 ### Select site for which tree species are known
-sites <- overview[overview$TREE==1 | overview$STAND==1,]
-sites$name1
+sites <- sites[sites$TREE==1 | sites$STAND==1,]
+sites$site
 
 ### Match sites and site_infos (lat and elevation infos needed later on)
-site_infos <- site_infos[match(sites$name1,site_infos$name1),]
+site_infos <- site_infos[match(sites$site,site_infos$site),]
 
-### site_infos$lon project?!
 
 ### Create landclim maps ####
 d <- 100 
@@ -37,6 +36,6 @@ landclim_stack <- stack(aspect, dem, landtype, management, mask, nitro, slope, s
 names(landclim_stack) <- c("aspect", "dem", "landtype", "management", "mask", "nitro", "slope", "soil", "stand")
 
 ### Write maps in landclim format
-write_landclim_maps(landclim_stack,  nodata_value = "-9999", lcResolution = 25,  folder=paste("simulations/", tolower(sites$name1[1]), "/Input", sep=""))
+write_landclim_maps(landclim_stack,  nodata_value = "-9999", lcResolution = 25,  folder=paste("simulations/", tolower(sites$site[1]), "/Input", sep=""))
 
 
