@@ -1,4 +1,5 @@
 library(ProfoundData)
+library(LandClimTools)
 
 setDB("../data/ProfoundData.sqlite")
 
@@ -41,14 +42,15 @@ abline(lm(tmean_degC ~ date, data=clim_site), lwd=3, col="tomato")
 header <- readLines("../data/landclim_site_infos/climate_header.txt")
 header[2]   ### Latitude must match latitude of site
 
-header[2] <- site_infos$lat[site_infos$name1=="BilyKriz"]
+header[2] <- site_infos$lat[site_infos$site=="bily_kriz"]
 
 ### Altitude!
 header[3] <- ifelse(is.na(site_infos$elevation_masl[1]), 99, (site_infos$elevation_masl[1]))
 # profound_climate_to_landclim(climdata, header, file="data/test_clim.txt")
-dir.create("simulations/bilykriz")
-dir.create("simulations/bilykriz/Input")
+dir.create("simulations")
+dir.create("simulations/bily_kriz")
+dir.create("simulations/bily_kriz/Input")
 
-profound_climate_to_landclim(clim[clim$forcingConditions=="historical",], header, file="simulations/bilykriz/Input/clim.txt")
+profound_climate_to_landclim(clim[clim$forcingConditions=="historical",], header, file="simulations/bily_kriz/Input/clim.txt")
 
 
