@@ -6,7 +6,7 @@ setDB("../data/ProfoundData.sqlite")
 overview <- browseData()
 site_infos <- ProfoundData::getData(dataset =  "SITES")
 site_infos <- site_infos[overview$TREE ==1,]
-site_infos$site
+site_infos$site   ### Remove "global"
 
 ### Klimadaten für site BilyKriz ####
 ### ISIMIP: www.isimip.org
@@ -45,7 +45,7 @@ header[2]   ### Latitude must match latitude of site
 header[2] <- site_infos$lat[site_infos$site=="bily_kriz"]
 
 ### Altitude!
-header[3] <- ifelse(is.na(site_infos$elevation_masl[1]), 99, (site_infos$elevation_masl[1]))
+header[3] <- ifelse(is.na(site_infos$elevation_masl[site_infos$site=="bily_kriz"]), 99, (site_infos$elevation_masl[1]))
 # profound_climate_to_landclim(climdata, header, file="data/test_clim.txt")
 dir.create("simulations")
 dir.create("simulations/bily_kriz")
