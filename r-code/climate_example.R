@@ -8,7 +8,7 @@ site_infos <- ProfoundData::getData(dataset =  "SITES")
 site_infos <- site_infos[overview$TREE ==1,]
 site_infos$site   ### Remove "global"
 
-### Klimadaten für site BilyKriz ####
+### Klimadaten für site Bily Kriz ####
 ### ISIMIP: www.isimip.org
 colnames(overview)
 clim <- ProfoundData::getData("CLIMATE_ISIMIPFT", "bily_kriz")
