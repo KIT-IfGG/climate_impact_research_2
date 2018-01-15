@@ -51,6 +51,5 @@ dir.create("simulations")
 dir.create("simulations/bily_kriz")
 dir.create("simulations/bily_kriz/Input")
 
-profound_climate_to_landclim(clim[clim$forcingConditions=="historical",], header, file="simulations/bily_kriz/Input/clim.txt")
-
+profound_climate_to_landclim(clim[clim$forcingConditions=="historical",], header, file="simulations/bily_kriz/Input/climate_historical.txt")
 

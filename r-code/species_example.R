@@ -15,7 +15,7 @@ species_codes[m,"name_landclim"]
 
 species_selection <- species[species$name %in% species_codes$name_landclim[match(species_selection_profound, species_codes$name_profound)],]
 
-write_species_xml(species_selection, paste0("simulations/bily_kriz/Input/test_species.xml"))
+write_species_xml(species_selection, paste0("simulations/bily_kriz/Input/species_actual.xml"))
 
 
 
