@@ -21,3 +21,6 @@ library(devtools)
 install_github("KIT-IfGG/LandClimTools")
 library(LandClimTools)
 
+### Alternative: Install R-package LandClimTools from file (see Ilias). Change the path to your folder structure! This line need to be executed only once.
+#install.packages(pkgs="path/to/LandClimTools.tar.gz", repos=NULL, type = "source")
+
