@@ -9,13 +9,18 @@ library(LandClimTools)
 getwd() ### ok?
 proj_wd <- getwd()
 
+
+
+
+
 ### Set LandClim path
-set_landclim_path("/home/klara/profound_simulations/data/LandClim_trunk_2016")   ### only runs with Ubuntu!
+set_landclim_path("simulations/LandClim_trunk_2016")   ### only runs with Ubuntu!
 
 ### Folder name, simulation name. Could also be "bily_kriz_current_climate"
 sites_sim <- "bily_kriz"
 
 ### Simulation ####
+setwd(proj_wd)
 setwd(paste(proj_wd, "/simulations/", tolower(sites_sim), sep=""))
 
 ### If you preparesd already two climate files as done in "climate_examle.R"
