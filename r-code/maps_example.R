@@ -24,7 +24,7 @@ site_infos <- site_infos[match(sites$site,site_infos$site),]
 
 ### Create landclim maps ####
 ### ToDo: Project to UTM, m, coords!
-
+### ToDo: Hard coding "bily_kriz"
 d <- 100 
 dem <- raster(xmn=site_infos$lon[1]-d, xmx=site_infos$lon[1]+d, ymn=site_infos$lat[1]-d, ymx=site_infos$lat[1]+d, crs=CRS("+init=epsg:4326"), resolution=25)  
 dem[] <-  ifelse(is.na(site_infos$elevation_masl[1]), 99, (site_infos$elevation_masl[1]))
@@ -38,6 +38,6 @@ landclim_stack <- stack(aspect, dem, landtype, management, mask, nitro, slope, s
 names(landclim_stack) <- c("aspect", "dem", "landtype", "management", "mask", "nitro", "slope", "soil", "stand")
 
 ### Write maps in landclim format
-write_landclim_maps(landclim_stack,  nodata_value = "-9999", lcResolution = 25,  folder=paste("simulations/", tolower(sites$site[1]), "/Input", sep=""))
+write_landclim_maps(landclim_stack,  nodata_value = "-9999", lcResolution = 25,  folder=paste("simulations/", tolower("bily_kriz"), "/Input", sep=""))
 
 
