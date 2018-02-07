@@ -1,7 +1,7 @@
 library(ProfoundData)
 library(LandClimTools)
 
-setDB("../data/ProfoundData.sqlite")
+setDB("../data/R-Packages/ProfoundData.sqlite")
 
 overview <- browseData()
 site_infos <- ProfoundData::getData(dataset =  "SITES")
@@ -51,5 +51,6 @@ dir.create("simulations")
 dir.create("simulations/bily_kriz")
 dir.create("simulations/bily_kriz/Input")
 
-profound_climate_to_landclim(clim[clim$forcingConditions=="historical",], header, file="simulations/bily_kriz/Input/climate_historical.txt")
+profound_climate_to_landclim(climate=clim[clim$forcingConditions=="historical",], header=header, file="simulations/bily_kriz/Input/climate_historical.txt", shuffle=FALSE)
 
+profound_climate_to_landclim(climate=clim[clim$forcingConditions=="historical",], header=header, file="simulations/bily_kriz/Input/climate_historical_shuffled.txt", shuffle=TRUE, n_years=300)

@@ -4,7 +4,7 @@ library(ggmap)
 library(mapproj)
 
 
-setDB("../data/ProfoundData.sqlite")
+setDB("../data/R-Packages/ProfoundData.sqlite")
 
 overview <- browseData()
 site_infos <- ProfoundData::getData(dataset =  "SITES")
