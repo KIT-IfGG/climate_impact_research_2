@@ -1,48 +1,32 @@
 library(LandClimTools)
+reload("/home/klara/R/x86_64-pc-linux-gnu-library/3.4/LandClimTools")
 ### Do not forget to create all input files!
 ### Execute (and later adjust) maps_exampe.R, species_example.R, climate_example.R 
 ### Copy also the control.xml etc. into the Input folder!
 ### In the following code the working directory will be changed (not good style, but necessary here);
 ### if there is a error message, check, if it is the because the wd changed! getwd()
 
-#setwd(proj_wd)
 getwd() ### ok?
 proj_wd <- getwd()
+#setwd(proj_wd)
 
-
-
-
-
-### Set LandClim path
-set_landclim_path("simulations/LandClim_trunk_2016")   ### only runs with Ubuntu!
+### Set LandClim path: Full path!
+set_landclim_path(paste(getwd(), "simulations/LandClim_trunk_2016", sep="/"))   ### only runs with Ubuntu!
 
 ### Folder name, simulation name. Could also be "bily_kriz_current_climate"
 sites_sim <- "bily_kriz"
 
 ### Simulation ####
-setwd(proj_wd)
-setwd(paste(proj_wd, "/simulations/", tolower(sites_sim), sep=""))
+sim_folder <- paste("/simulations/", tolower(sites_sim), sep="")
+run_landclim(control_file="control.xml", input_folder=paste(sim_folder, "Input", sep="/"), output_folder=paste(sim_folder, "Output", sep="/"))
+clean_output_ubuntu()
 
-### If you preparesd already two climate files as done in "climate_examle.R"
+### If you prepared already two climate files as done in "climate_examle.R"
 ### you need to copy the one you want to use to file "climate.txt", corresponding
 ### file name in the control.xml. Same for species files.
 file.copy("Input/climate_historical.txt", "Input/climate.txt", overwrite=TRUE)   ### Must return "TRUE"
 file.copy("Input/species_actual.xml", "Input/species.xml", overwrite=TRUE)       ### Must return "TRUE"
 #file.copy("Input/species_pnv.xml", "Input/species.xml", overwrite=TRUE)
-getwd()
-dir.create("Output")
-file.remove(list.files("Output", full=TRUE))
-simulate(control_file="control.xml")
-clean_output_ubuntu()
-
-
-simulate
-control_file <- "control.xml"
-oldwd <- getwd()
-setwd(paste(getwd(), "/Input/", sep = ""))
-file.exists("control.xml")
-system(paste(lc_path, control_file, sep = " "))
-setwd(oldwd)
 
 
 ### Plot succession ####

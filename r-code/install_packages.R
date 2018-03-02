@@ -5,7 +5,7 @@
 # install.packages("DBI")
 # install.packages("sqldf")
 # install.packages("rgdal", type = "source")
-#install.packages("devtools")
+# install.packages("devtools")
 
 ### Install the ProfoundData package from file ####
 # install.packages("../data/R-Packages/ProfoundData_0.1.6.tar.gz", build_vignettes = TRUE, repos = NULL)
