@@ -25,3 +25,9 @@ library(LandClimTools)
 ### Alternative: Install R-package LandClimTools from file (see Ilias). Change the path to your folder structure! This line need to be executed only once.
 #install.packages(pkgs="path/to/LandClimTools.tar.gz", repos=NULL, type = "source")
 
+
+### Install old LandClimTools version ####
+### Version for climate impact research course 2017/18
+library(devtools)
+install_github("KIT-IfGG/LandClimTools", ref = "5b5ae3ffa51669edec650c6cabdcdcb66b8ca28b")
+
