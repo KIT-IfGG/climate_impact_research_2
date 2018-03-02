@@ -1,4 +1,5 @@
 library(LandClimTools)
+reload("/home/klara/R/x86_64-pc-linux-gnu-library/3.4/LandClimTools")
 ### Do not forget to create all input files!
 ### Execute (and later adjust) maps_exampe.R, species_example.R, climate_example.R 
 ### Copy also the control.xml etc. into the Input folder!
