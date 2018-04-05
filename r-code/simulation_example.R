@@ -17,7 +17,7 @@ set_landclim_path(paste(getwd(), "simulations/LandClim_trunk_2016", sep="/"))   
 sites_sim <- "bily_kriz"
 
 ### Simulation ####
-sim_folder <- paste("/simulations/", tolower(sites_sim), sep="")
+sim_folder <- paste("simulations/", tolower(sites_sim), sep="")
 run_landclim(control_file="control.xml", input_folder=paste(sim_folder, "Input", sep="/"), output_folder=paste(sim_folder, "Output", sep="/"))
 clean_output_ubuntu()
 
