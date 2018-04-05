@@ -19,7 +19,7 @@ sites_sim <- "bily_kriz"
 ### Simulation ####
 sim_folder <- paste("simulations/", tolower(sites_sim), sep="")
 run_landclim(control_file="control.xml", input_folder=paste(sim_folder, "Input", sep="/"), output_folder=paste(sim_folder, "Output", sep="/"))
-clean_output_ubuntu()
+clean_output_ubuntu(sim_folder)
 
 ### If you prepared already two climate files as done in "climate_examle.R"
 ### you need to copy the one you want to use to file "climate.txt", corresponding
